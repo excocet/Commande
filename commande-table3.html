@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Commande - Table 3</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 500px; margin: auto; }
+    h1 { text-align: center; }
+    li { margin: 10px 0; display: flex; justify-content: space-between; align-items: center; }
+    select { font-size: 16px; }
+    .total { font-weight: bold; margin-top: 20px; text-align: center; font-size: 1.2em; }
+  </style>
+</head>
+<body>
+  <h1>Commande - Table 3</h1>
+  <form oninput="calculTotal()">
+    <ul>
+      <li>Coupe pétillant (1.50 €) <select data-price="1.5"></select></li>
+<li>Bouteille pétillant (6.00 €) <select data-price="6"></select></li>
+<li>Oasis (1.00 €) <select data-price="1"></select></li>
+<li>Schweppes (1.00 €) <select data-price="1"></select></li>
+<li>Coca zero (1.00 €) <select data-price="1"></select></li>
+<li>Coca (1.00 €) <select data-price="1"></select></li>
+<li>Fanta (1.00 €) <select data-price="1"></select></li>
+<li>Bouteille eau (0.50 €) <select data-price="0.5"></select></li>
+<li>Bière (1.50 €) <select data-price="1.5"></select></li>
+<li>Rosé pamplemousse (5.00 €) <select data-price="5"></select></li>
+<li>Café (1.00 €) <select data-price="1"></select></li>
+<li>Thé (1.00 €) <select data-price="1"></select></li>
+<li>Lion (1.00 €) <select data-price="1"></select></li>
+<li>Twix (1.00 €) <select data-price="1"></select></li>
+<li>Kit kat (1.00 €) <select data-price="1"></select></li>
+<li>Sachet bonbon x3 (0.50 €) <select data-price="0.5"></select></li>
+<li>Chips (0.50 €) <select data-price="0.5"></select></li>
+<li>Jambon beurre (2.50 €) <select data-price="2.5"></select></li>
+<li>Blanc de dinde beurre (2.50 €) <select data-price="2.5"></select></li>
+
+    </ul>
+    <p class="total">Total : <span id="total">0.00</span> €</p>
+  </form>
+  <script>
+    const selects = document.querySelectorAll("select");
+    selects.forEach(sel => {
+      for (let i = 0; i <= 5; i++) {
+        const option = document.createElement("option");
+        option.value = i;
+        option.textContent = i;
+        sel.appendChild(option);
+      }
+    });
+    function calculTotal() {
+      let total = 0;
+      selects.forEach(sel => {
+        total += parseFloat(sel.dataset.price) * parseInt(sel.value);
+      });
+      document.getElementById("total").textContent = total.toFixed(2);
+    }
+  </script>
+</body>
+</html>
